@@ -9,9 +9,25 @@ pytorch tensorboardX open3d nuscenes-devkit opencv-python
 * Set Data Path
   * First, modify dataset paths written in `sequences` section of the file `pc_processor/dataset/nia/nia.yaml`
 * Data Structure
-  * Each sequence must have folders names `seg` and `refine` instead of `가공데이터(seg)` and `정제데이터(refine)`
+  * Each sequence must have folders named `seg` and `refine` instead of `가공데이터(seg)` and `정제데이터(refine)`
   * Each sequence must have text files named `cam.txt` and `calib.txt` at its root
     * ex) ATECTN/cam.txt, ATECTN/calib.txt
+
+```
+my_dataset                  # Dataset root path
+├─ ATECTN/                  # Sequence root path
+│  ├─ cam.txt               # camera intrinsic matrix
+│  ├─ calib.txt             # camera-lidar extrinsic matrix
+│  └─ EXCO/A/sunny/220724/9-11                 # sequence directory
+│     ├─ refine                 # sensor data
+│     │  ├─ camera              # rgb image files
+│     │  └─ pcd                 # pcd lidar measurements
+│     └─ seg                    # label data
+│        ├─ mask                # segmentation masks
+│        ├─ de-identification   # de-identified images
+│        └─ segmentation        # json files
+└─ ...
+```
 
 ## Introduction
 
