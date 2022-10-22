@@ -32,7 +32,7 @@ my_dataset                  # Dataset root path
 * Set hyperparameters and run
   * Go to the directory `tasks/pmf`
   * Set hyperparameters in `config_server_nia.yaml`
-  * Run training by executing 'run.sh'
+  * Run training by executing the script named `run.sh`
 
 ## Introduction
 
