@@ -1,0 +1,113 @@
+# This file is covered by the LICENSE file in the root of this project.
+name: "nia"
+labels:
+  0: "OUT_Road"
+  1: "OUT_Pavement"
+  2: "OUT_Curbstone"
+  3: "OUT_Structure"
+  4: "OUT_Grass"
+  5: "OUT_Tree"
+  6: "OUT_Fence"
+  7: "OUT_Pole"
+  8: "OUT_Bench"
+  9: "OUT_Sculpture"
+  10: "OUT_Gate"
+  11: "OUT_Sign"
+  12: "OUT_Traffic Safety Stuff"
+  13: "OUT_Undefined Stuff"
+  14: "IN_Hall Way"
+  15: "IN_Open Space"
+  16: "IN_Wall"
+  17: "IN_Fence"
+  18: "IN_Pillar"
+  19: "IN_Bench"
+  20: "IN_Obstruction"
+  21: "IN_Gate"
+  22: "IN_Elevator"
+  23: "IN_Sign"
+  24: "IN_Emergency Stuff"
+  25: "IN_Undefined Stuff"
+  26: "Undefined Object"
+  27: "Two-wheeled Vehicle"
+  28: "Vehicle"
+  29: "Wheelchair"
+  30: "Stroller"
+  31: "Animal"
+  32: "Human"
+color_map: # bgr
+  0: [191, 37, 227] #  [0, 0, 0]
+  1: [220, 252, 169]
+  2: [212, 43, 31]
+  3: [17, 215, 166]
+  4: [8, 220, 196]
+  5: [51, 234, 134]
+  6: [229, 18, 154]
+  7: [233, 224, 90]
+  8: [176, 161, 140]
+  9: [118, 182, 82]
+  10: [96, 11, 161]
+  11: [205, 158, 69]
+  12: [188, 40, 210]
+  13: [189, 240, 74]
+  14: [159, 115, 181]
+  15: [141, 1, 55]
+  16: [33, 44, 134]
+  17: [35, 49, 168]
+  18: [47, 222, 111]
+  19: [148, 173, 140]
+  20: [249, 174, 87]
+  21: [94, 173, 43]
+  22: [48, 101, 85]
+  23: [152, 234, 50]
+  24: [117, 148, 40]
+  25: [238, 118, 115]
+  26: [233, 2, 66]
+  27: [180, 135, 227]
+  28: [221, 237, 102]
+  29: [253, 203, 136]
+  30: [52, 8, 21]
+  31: [92, 183, 126]
+  32: [95, 158, 35]
+learning_ignore: # Ignore classes
+  0: False #"OUT_Road"
+  1: False #"OUT_Pavement"
+  2: False #"OUT_Curbstone"
+  3: False #"OUT_Structure"
+  4: False #"OUT_Grass"
+  5: False #"OUT_Tree"
+  6: False #"OUT_Fence"
+  7: False #"OUT_Pole"
+  8: False #"OUT_Bench"
+  9: False #"OUT_Sculpture"
+  10: False #"OUT_Gate"
+  11: False #"OUT_Sign"
+  12: False #"OUT_Traffic Safety Stuff"
+  13: False #"OUT_Undefined Stuff"
+  14: False #"IN_Hall Way"
+  15: False #"IN_Open Space"
+  16: False #"IN_Wall"
+  17: False #"IN_Fence"
+  18: False #"IN_Pillar"
+  19: False #"IN_Bench"
+  20: False #"IN_Obstruction"
+  21: False #"IN_Gate"
+  22: False #"IN_Elevator"
+  23: False #"IN_Sign"
+  24: False #"IN_Emergency Stuff"
+  25: False #"IN_Undefined Stuff"
+  26: False #"Undefined Object"
+  27: False #"Two-wheeled Vehicle"
+  28: False #"Vehicle"
+  29: False #"Wheelchair"
+  30: False #"Stroller"
+  31: False #"Animal"
+  32: False #"Human"
+sequences:
+  train:
+    - ATECTN/EXCO/A/sunny/220724/9-11
+
+  val:
+    - ATECTN/EXCO/A/sunny/220724/9-11
+
+  test:
+    - ATECTN/EXCO/A/sunny/220724/9-11

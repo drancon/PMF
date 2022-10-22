@@ -105,12 +105,15 @@ class PerspectiveViewLoader(Dataset):
 
         proj_label = np.zeros((image.shape[0], image.shape[1]), dtype=np.int32)
 
-        try:
-            proj_label[x_data,  y_data] = self.dataset.labelMapping(sem_label[keep_mask])
-        except Exception as msg:
-            print(msg)
-            print(keep_mask.shape)
-            print(sem_label.shape)
+        if sem_label.ndim == 2:
+            proj_label[x_data,  y_data] = sem_label[x_data,  y_data]
+        else:
+            try:
+                proj_label[x_data,  y_data] = self.dataset.labelMapping(sem_label[keep_mask])
+            except Exception as msg:
+                print(msg)
+                print(keep_mask.shape)
+                print(sem_label.shape)
 
         proj_mask = np.zeros(
             (image.shape[0], image.shape[1]), dtype=np.int32)

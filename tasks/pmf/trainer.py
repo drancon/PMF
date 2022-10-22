@@ -124,14 +124,37 @@ class Trainer(object):
 
         elif self.settings.dataset == "nuScenes":
             trainset = pc_processor.dataset.nuScenes.Nuscenes(
-                root=self.settings.data_root, version="v1.0-trainval", split="train",
+                root=self.settings.data_root, version="v1.0-mini", split="train",
             )
             valset = pc_processor.dataset.nuScenes.Nuscenes(
-                root=self.settings.data_root, version="v1.0-trainval", split="val",
+                root=self.settings.data_root, version="v1.0-mini", split="val",
             )
             self.cls_weight = np.ones((self.settings.nclasses))
             self.ignore_class = [0]
             self.mapped_cls_name = trainset.mapped_cls_name
+            
+        elif self.settings.dataset == "NIA":
+            data_config_path = "../../pc_processor/dataset/nia/nia.yaml"
+            trainset = pc_processor.dataset.nia.NIADataset(
+                root=self.settings.data_root,
+                mode="train",
+                config_path=data_config_path
+            )
+            self.cls_weight = np.ones((self.settings.nclasses))
+            self.ignore_class = []
+            for cl, w in enumerate(self.cls_weight):
+                if trainset.data_config["learning_ignore"][cl]:
+                    self.cls_weight[cl] = 0
+                if self.cls_weight[cl] < 1e-10:
+                    self.ignore_class.append(cl)
+            self.mapped_cls_name = trainset.mapped_cls_name
+
+            valset = pc_processor.dataset.nia.NIADataset(
+                root=self.settings.data_root,
+                mode="val",
+                config_path=data_config_path
+            )
+            
         else:
             raise ValueError(
                 "invalid dataset: {}".format(self.settings.dataset))
@@ -195,6 +218,8 @@ class Trainer(object):
             alpha = np.log(1+self.cls_weight)
             alpha = alpha / alpha.max()
         elif self.settings.dataset == "nuScenes":
+            alpha = np.ones((self.settings.nclasses))
+        elif self.settings.dataset == "NIA":
             alpha = np.ones((self.settings.nclasses))
         alpha[0] = 0
         if self.recorder is not None:

@@ -1,5 +1,5 @@
 # common config
-save_path: "../../experiments/PMF-nuScenes/"
+save_path: "../../experiments/PMF-NIA/"
 seed: 1
 gpu: "0,1"
 print_frequency: 2
@@ -11,17 +11,16 @@ val_only: false
 has_label: true
 is_debug: false
 n_epochs: 50
-batch_size: [3, 3]
+batch_size: [2, 4]
 lr: 0.001
-lr_decay: 0.99
 warmup_epochs: 1
 momentum: 0.9
 weight_decay: 0.00001
 val_frequency: 1
 
-dataset: "nuScenes"
-nclasses: 17 # 16+1(ignored)
-data_root: "/home/changsik/project/ml_data_eval/dataset/nuscenes_mini"
+dataset: "NIA"
+nclasses: 33
+data_root: "/home01/52-2"
 
 base_channels: 32
 img_backbone: "resnet34"
@@ -67,28 +66,29 @@ augmentation:
   img_jitter: [0.4, 0.4, 0.4]
 
 sensor:
-  name: "HDL64"
+  name: "VLP16"
   type: "perception-aware"
-  proj_h: 896
-  proj_w: 1600 
-  proj_ht: 512 
-  proj_wt: 640 
+  # crop size of validation samples
+  proj_h: 1072
+  proj_w: 1920
+  # crop size of training samples
+  proj_ht: 1072 
+  proj_wt: 1920 
   h_pad: 0
   w_pad: 0
 
   img_mean:
-    - 16.51
-    - 0.10
-    - -0.21
-    - -0.21
-    - 21.18
+    - 12.12
+    - 10.88
+    - 0.23
+    - -1.04
+    - 0.21
   img_stds:
-    - 14.16
-    - 14.35
-    - 16.09
-    - 2.34
-    - 22.45 
-
+    - 12.32
+    - 11.47
+    - 6.91
+    - 0.86
+    - 0.16  
 post:
   KNN:
     use: false # This parameter default is false
