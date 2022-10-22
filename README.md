@@ -11,6 +11,7 @@ pytorch tensorboardX open3d nuscenes-devkit opencv-python
 * Data structure
   * Each sequence must have folders named `seg` and `refine` instead of `가공데이터(seg)` and `정제데이터(refine)`
   * Each sequence must have text files named `cam.txt` and `calib.txt` at its root
+    * please copy the files in `calib/` into sequence root directories(refer to the data structure below)
     * ex) ATECTN/cam.txt, ATECTN/calib.txt
 
 ```
