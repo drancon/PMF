@@ -1,5 +1,18 @@
 # Perception-Aware Multi-Sensor Fusion for 3D LiDAR Semantic Segmentation (ICCV 2021)
 
+## Required Python Packages
+```
+pytorch tensorboardX open3d nuscenes-devkit opencv-python
+```
+
+## How to Run on NIA Dataset
+* Set Data Path
+  * First, modify dataset paths written in `sequences` section of the file `pc_processor/dataset/nia/nia.yaml`
+* Data Structure
+  * Each sequence must have folders names `seg` and `refine` instead of `가공데이터(seg)` and `정제데이터(refine)`
+  * Each sequence must have text files named `cam.txt` and `calib.txt` at its root
+    * ex) ATECTN/cam.txt, ATECTN/calib.txt
+
 ## Introduction
 
 In this work, we aim to explore an effective multi-sensor (LiDAR and RGB camera) fusion method for 3D LiDAR semantic segmentation. Existing fusion-based methods mainly conduct feature fusion in the LiDAR coordinates, which leads to the loss of perceptual features (shape or textures) of RGB images.    In contrast, we try to fuse the information from the two modalities in the camera coordinates, and propose a Perception-aware Multi-sensor Fusion (PMF) scheme. More details can be found in our paper.
