@@ -6,9 +6,9 @@ pytorch tensorboardX open3d nuscenes-devkit opencv-python
 ```
 
 ## How to Run on NIA Dataset
-* Set Data Path
+* Set data path
   * First, modify dataset paths written in `sequences` section of the file `pc_processor/dataset/nia/nia.yaml`
-* Data Structure
+* Data structure
   * Each sequence must have folders named `seg` and `refine` instead of `가공데이터(seg)` and `정제데이터(refine)`
   * Each sequence must have text files named `cam.txt` and `calib.txt` at its root
     * ex) ATECTN/cam.txt, ATECTN/calib.txt
@@ -28,6 +28,11 @@ my_dataset                  # Dataset root path
 │        └─ segmentation        # json files
 └─ ...
 ```
+
+* Set hyperparameters and run
+  * Go to the directory `tasks/pmf`
+  * Set hyperparameters in `config_server_nia.yaml`
+  * Run training by executing 'run.sh'
 
 ## Introduction
 
