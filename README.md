@@ -1,7 +1,5 @@
 # Perception-Aware Multi-Sensor Fusion for 3D LiDAR Semantic Segmentation (ICCV 2021)
 
-[[中文](./README.md)|EN]
-
 ## Introduction
 
 In this work, we aim to explore an effective multi-sensor (LiDAR and RGB camera) fusion method for 3D LiDAR semantic segmentation. Existing fusion-based methods mainly conduct feature fusion in the LiDAR coordinates, which leads to the loss of perceptual features (shape or textures) of RGB images.    In contrast, we try to fuse the information from the two modalities in the camera coordinates, and propose a Perception-aware Multi-sensor Fusion (PMF) scheme. More details can be found in our paper.
