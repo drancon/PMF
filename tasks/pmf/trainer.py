@@ -210,7 +210,10 @@ class Trainer(object):
 
     def _initCriterion(self):
         criterion = {}
-        criterion["lovasz"] = pc_processor.loss.Lovasz_softmax(ignore=0)
+        if len(self.ignore_class) > 0:
+            criterion["lovasz"] = pc_processor.loss.Lovasz_softmax(ignore=self.ignore_class)
+        else:
+            criterion["lovasz"] = pc_processor.loss.Lovasz_softmax()
 
         criterion["kl_loss"] = nn.KLDivLoss(reduction="none")
         
